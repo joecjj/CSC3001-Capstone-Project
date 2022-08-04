@@ -2,7 +2,7 @@
 Credit to https://github.com/salvia-kit/dashboard-v3-nextjs for tailwind css template
 
 ## Setup Requirements
-Kubernetes, Docker , Docker-compose, Skaffold, Ingress-Nginx on Kubernetes
+Kubernetes, Docker , Docker-compose, Skaffold, Ingress-Nginx required to run the application
 
 ## How to run source code
 Generate Kubernetes secret JWT_KEY in Kubernetes cluster
