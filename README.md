@@ -4,7 +4,8 @@ Credit to https://github.com/salvia-kit/dashboard-v3-nextjs for tailwind css tem
 ## Setup Requirements
 Kubernetes, Docker , Docker-compose, Skaffold
 
-## Run source code using skaffold dev command
+## How to run source code
+Generate Kubernetes secret JWT_KEY in Kubernetes cluster
 Bus Dashboard folder consists of the source code for Bus Dashboard application.
 
 Ticketing machine consists of the source code for Ticketing Machine application
