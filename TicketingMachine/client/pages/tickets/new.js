@@ -17,6 +17,7 @@ const NewTicket = ({ currentUser, tickets }) => {
   });
 
   const handleClick = (event, title, price) => {
+    console.log("title"+ title)
     if (title == "adult_ticket_01") {
       setTitle(title);
       setPrice(price);
@@ -50,25 +51,25 @@ const NewTicket = ({ currentUser, tickets }) => {
       <div className="mt-10 space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
         <div className="bg-red-500 cursor-pointer text-white p-4 rounded-md text-center shadow-xl">
           <a className="mt-2 font-bold" onClick={(e) => handleClick(e, "adult_ticket_01", 2)}>adult_ticket_01</a>
-          <div className="font-light">$2</div>
+          <div className="font-light" onClick={(e) => handleClick(e, "adult_ticket_01", 2)}>$2</div>
         </div>
 
         <div
           className="bg-red-500 cursor-pointer text-white p-4 rounded-md text-center shadow-xl">
           <a className="mt-2 font-bold" onClick={(e) => handleClick(e, "adult_ticket_02", 1)}>adult_ticket_02</a>
-          <div className="font-light">$1</div>
+          <div className="font-light" onClick={(e) => handleClick(e, "adult_ticket_02", 1)}>$1</div>
         </div>
 
         <div
           className="bg-green-500 cursor-pointer text-white p-4 rounded-md text-center shadow-xl">
           <a className="mt-2 font-bold" onClick={(e) => handleClick(e, "student_ticket_01", 1)}>student_ticket_01</a>
-          <div className="font-light">$1</div>
+          <div className="font-light" onClick={(e) => handleClick(e, "student_ticket_01", 1)}>$1</div>
         </div>
 
         <div
           className="bg-green-500 cursor-pointer text-white p-4 rounded-md text-center shadow-xl">
           <a className="mt-2 font-bold" onClick={(e) => handleClick(e, "student_ticket_02", 9,5)}>student_ticket_02</a>
-          <div className="font-light">$0.5</div>
+          <div className="font-light"  onClick={(e) => handleClick(e, "student_ticket_02", 9,5)}>$0.5</div>
         </div>
       </div>
     
