@@ -3,8 +3,8 @@ import "express-async-errors";
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
 import { errorHandler, NotFoundError, currentUser } from "@cygnetops/common-v2";
-import { showBusRouter } from "./routes/index";
-import { createBusRouter } from "./routes/new";
+import { showCardRouter } from "./routes/index";
+import { createCardRouter } from "./routes/new";
 
 const app = express();
 app.set("trust proxy", true);
@@ -16,8 +16,8 @@ app.use(
   })
 );
 app.use(currentUser);
-app.use(createBusRouter)
-app.use(showBusRouter);
+app.use(createCardRouter)
+app.use(showCardRouter);
 
 app.all("*", async (req, res) => {
   throw new NotFoundError();

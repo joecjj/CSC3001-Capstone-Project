@@ -41,7 +41,7 @@ const LandingPage = ({ currentUser, buses }) => {
 };
 
 LandingPage.getInitialProps = async (context, client, currentUser) => {
-  const { data } = await client.get("/api/bus");
+  const { data } = await client.get("/api/card");
 
   return { buses: data };
 };

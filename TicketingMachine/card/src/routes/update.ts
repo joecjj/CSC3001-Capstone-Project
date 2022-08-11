@@ -6,13 +6,13 @@ import {
   requireAuth,
   NotAuthorizedError,
 } from "@cygnetops/common-v2";
-import { Ticket } from "../models/card";
+import { Card } from "../models/card";
 
 
 const router = express.Router();
 
 router.put(
-  "/api/tickets/:id",
+  "/api/card/:id",
   requireAuth,
   [
     body("title").not().isEmpty().withMessage("Title is required"),
@@ -22,7 +22,7 @@ router.put(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const ticket = await Ticket.findById(req.params.id);
+    const ticket = await Card.findById(req.params.id);
 
     if (!ticket) {
       throw new NotFoundError();

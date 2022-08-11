@@ -8,6 +8,7 @@ import { showTicketRouter } from "./routes/show";
 import { indexTicketRouter } from "./routes/index";
 import { updateTicketRouter } from "./routes/update";
 
+
 const app = express();
 app.set("trust proxy", true);
 app.use(json());

@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bus-mongo-depl
+  name: card-mongo-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bus-mongo
+      app: card-mongo
   template:
     metadata:
       labels:
-        app: bus-mongo
+        app: card-mongo
     spec:
       containers:
-        - name: bus-mongo
+        - name: card-mongo
           image: mongo
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: bus-mongo-srv
+  name: card-mongo-srv
 spec:
   selector:
-    app: bus-mongo
+    app: card-mongo
   ports:
     - name: db
       protocol: TCP

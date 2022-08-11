@@ -1,25 +1,25 @@
 import mongoose from 'mongoose';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
-interface BusAttrs {
+interface CardAttrs {
   lat: number;
   long: number;
   neareststop: string;
   currentstop:string;
 }
 
-interface BusDoc extends mongoose.Document {
+interface CardDoc extends mongoose.Document {
   lat?: number;
   long?: number;
   neareststop?: string;
   currentstop?:string;
 }
 
-interface TicketModel extends mongoose.Model<BusDoc> {
-  build(attrs: BusAttrs): BusDoc;
+interface TicketModel extends mongoose.Model<CardDoc> {
+  build(attrs: CardAttrs): CardDoc;
 }
 
-const busSchema = new mongoose.Schema(
+const cardSchema = new mongoose.Schema(
   {
     lat: {
       type: Number,
@@ -46,13 +46,13 @@ const busSchema = new mongoose.Schema(
     },
   }
 );
-busSchema.set('versionKey', 'version');
-busSchema.plugin(updateIfCurrentPlugin);
+cardSchema.set('versionKey', 'version');
+cardSchema.plugin(updateIfCurrentPlugin);
 
-busSchema.statics.build = (attrs: BusAttrs) => {
-  return new Bus(attrs);
+cardSchema.statics.build = (attrs: CardAttrs) => {
+  return new Card(attrs);
 };
 
-const Bus = mongoose.model<BusDoc, TicketModel>('Bus', busSchema);
+const Card = mongoose.model<CardDoc, TicketModel>('Card', cardSchema);
 
-export { Bus };
+export { Card };

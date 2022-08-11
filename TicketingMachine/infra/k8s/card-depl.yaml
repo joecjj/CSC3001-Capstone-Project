@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bus-depl
+  name: card-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bus
+      app: card
   template:
     metadata:
       labels:
-        app: bus
+        app: card
     spec:
       containers:
-        - name: bus
-          image: joecjj/busdashboard-bus:latest
+        - name: card
+          image: joecjj/busdashboard-card:latest
           env:
             - name: MONGO_URI
-              value: 'mongodb://bus-mongo-srv:27017/bus'
+              value: 'mongodb://card-mongo-srv:27017/card'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: bus-srv
+  name: card-srv
 spec:
   selector:
-    app: bus
+    app: card
   ports:
-    - name: bus
+    - name: card
       protocol: TCP
       port: 3000
       targetPort: 3000

@@ -1,25 +1,25 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import { requireAuth, validateRequest } from "@cygnetops/common-v2";
-import { Bus } from "../models/bus";
+import { Card } from "../models/card";
 
 const router = express.Router();
 
 router.post(
-  "/api/bus",
+  "/api/card",
   async (req: Request, res: Response) => {
     const { lat, long,neareststop,currentstop } = req.body;
 
-    const bus = Bus.build({
+    const card = Card.build({
       lat,
       long,
      neareststop,
      currentstop
     });
-    await bus.save();
+    await card.save();
 
-    res.status(201).send(bus);
+    res.status(201).send(card);
   }
 );
 
-export { router as createBusRouter };
+export { router as createCardRouter };

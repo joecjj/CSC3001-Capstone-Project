@@ -32,8 +32,8 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: joecjj/busdashboard-bus
-      context: bus
+    - image: joecjj/busdashboard-card
+      context: card
       docker:
         dockerfile: Dockerfile
       sync:
