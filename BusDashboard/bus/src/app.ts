@@ -2,7 +2,7 @@ import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
-import { errorHandler, NotFoundError, currentUser } from "@cygnetops/common-v2";
+import { errorHandler, NotFoundError, currentUser } from "@capstonemicro/common-middleware";
 import { showBusRouter } from "./routes/index";
 import { createBusRouter } from "./routes/new";
 

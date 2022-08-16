@@ -6,6 +6,7 @@ import { Password } from '../services/password';
 interface UserAttrs {
   email: string;
   password: string;
+  value: number;
 }
 
 // An interface that describes the properties
