@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import jwt from "jsonwebtoken";
-import { validateRequest, BadRequestError } from "@cygnetops/common-v2";
+import { validateRequest, BadRequestError } from "@capstonemicro/common-middleware";
 
 import { Password } from "../services/password";
 import { User } from "../models/user";
@@ -16,11 +16,12 @@ router.post(
       .trim()
       .notEmpty()
       .withMessage("You must supply a password"),
+    body("value")
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { email, password } = req.body;
-
+    const { email, password,value } = req.body;
+    console.log(value+email)
     const existingUser = await User.findOne({ email });
     if (!existingUser) {
       throw new BadRequestError("Invalid credentials");
@@ -28,7 +29,7 @@ router.post(
 
     const passwordsMatch = await Password.compare(
       existingUser.password,
-      password
+      password,
     );
     if (!passwordsMatch) {
       throw new BadRequestError("Invalid Credentials");
@@ -46,6 +47,7 @@ router.post(
     // Store it on session object
     req.session = {
       jwt: userJwt,
+      value: value
     };
 
     res.status(200).send(existingUser);

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: card-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: card
+  template:
+    metadata:
+      labels:
+        app: card
+    spec:
+      containers:
+        - name: card
+          image: joecjj/busdashboard-card:latest
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://card-mongo-srv:27017/card'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: card-srv
+spec:
+  selector:
+    app: card
+  ports:
+    - name: card
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

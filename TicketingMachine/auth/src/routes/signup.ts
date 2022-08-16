@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import jwt from "jsonwebtoken";
-import { validateRequest, BadRequestError } from "@cygnetops/common-v2";
+import { validateRequest, BadRequestError } from "@capstonemicro/common-middleware";
 
 import { User } from "../models/user";
 
@@ -15,10 +15,11 @@ router.post(
       .trim()
       .isLength({ min: 4, max: 20 })
       .withMessage("Password must be between 4 and 20 characters"),
+
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { email, password } = req.body;
+    const { email, password ,value} = req.body;
 
     const existingUser = await User.findOne({ email });
 
@@ -26,7 +27,7 @@ router.post(
       throw new BadRequestError("Email in use");
     }
 
-    const user = User.build({ email, password });
+    const user = User.build({ email, password,value });
     await user.save();
 
     // Generate JWT

@@ -31,11 +31,11 @@ spec:
                 name: transaction-srv
                 port:
                   number: 3000
-          - path: /api/bus/?(.*)
+          - path: /api/card/?(.*)
             pathType: Prefix
             backend:
               service:
-                name: bus-srv
+                name: card-srv
                 port:
                   number: 3000
           - path: /?(.*)

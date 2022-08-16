@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: card-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: card-mongo
+  template:
+    metadata:
+      labels:
+        app: card-mongo
+    spec:
+      containers:
+        - name: card-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: card-mongo-srv
+spec:
+  selector:
+    app: card-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
